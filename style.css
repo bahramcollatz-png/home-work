@@ -1,22 +1,139 @@
+/* Accessible Page Transition System (fade + slide, Tailwind-friendly) */
+:root {
+  --pt-duration: 450ms;
+  --pt-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#page-wrapper {
+  will-change: opacity, transform;
+}
+.pt-enter {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.pt-enter-active {
+  transition: opacity var(--pt-duration) var(--pt-ease),
+    transform var(--pt-duration) var(--pt-ease);
+  opacity: 1;
+  transform: translateY(0);
+}
+.pt-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pt-exit-active {
+  transition: opacity var(--pt-duration) var(--pt-ease),
+    transform var(--pt-duration) var(--pt-ease);
+  opacity: 0;
+  transform: translateY(-16px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pt-enter,
+  .pt-enter-active,
+  .pt-exit,
+  .pt-exit-active {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
 html {
   scroll-behavior: smooth;
 }
 /* Back to Top button styles */
+
+/* Back to Top button with ripple signaling effect */
 #back-to-top {
-  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 220ms ease,
-    box-shadow 300ms ease, filter 300ms ease;
-  transform: translateY(8px) scale(0.98);
+  position: fixed;
+  right: 1rem;
+  bottom: 2.5rem;
+  z-index: 50;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
+  transform: translateY(1rem) scale(0.9);
   pointer-events: none;
-  margin-bottom: 9px;
 }
+
 #back-to-top.show {
-  transform: translateY(0) scale(1);
   opacity: 1;
+  transform: translateY(0) scale(1);
   pointer-events: auto;
-  /* stronger base glow so it's visible even when not animating */
-  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.3);
-  filter: drop-shadow(0 6px 18px rgba(79, 70, 229, 0.25));
+}
+
+/* Ripple signaling effect */
+#back-to-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  animation: ripple-signal 2s infinite;
+  z-index: -1;
+}
+
+#back-to-top::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  animation: ripple-signal 2s infinite 0.7s;
+  z-index: -2;
+}
+
+@keyframes ripple-signal {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Hover effects */
+#back-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
+}
+
+#back-to-top:hover::before,
+#back-to-top:hover::after {
+  animation-duration: 1.5s;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #back-to-top::before,
+  #back-to-top::after {
+    animation: none;
+  }
+
+  #back-to-top {
+    transition: opacity 0.3s ease;
+  }
 }
 /* more noticeable glowing pulse */
 @keyframes btg-pulse {
@@ -126,11 +243,18 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  
 
-  background: linear-gradient(180deg, rgba(17, 24, 39, 0.521), rgba(17,24,19,0.6)),
-radial-gradient(ellipse at center, rgba(17,24,19,0) 40%, rgba(17,24,19,0.45) 100%);
- 
+  background: linear-gradient(
+      180deg,
+      rgba(17, 24, 39, 0.521),
+      rgba(17, 24, 19, 0.6)
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(17, 24, 19, 0) 40%,
+      rgba(17, 24, 19, 0.45) 100%
+    );
+
   pointer-events: none;
 }
 .hero-content {

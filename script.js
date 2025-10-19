@@ -1,4 +1,84 @@
-feather.replace();
+// Accessible Page Transition System (fade + slide, Tailwind-friendly)
+(function () {
+  const DURATION = 450;
+  const EASE = "cubic-bezier(.4,0,.2,1)";
+  const wrapper = document.getElementById("page-wrapper");
+  if (!wrapper) return;
+
+  // Accessibility: check prefers-reduced-motion
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  if (reduceMotion || wrapper.hasAttribute("data-no-transition")) return;
+
+  function runTransition(type) {
+    return new Promise((resolve) => {
+      wrapper.classList.remove(
+        "pt-enter",
+        "pt-enter-active",
+        "pt-exit",
+        "pt-exit-active"
+      );
+      wrapper.classList.add(type);
+      void wrapper.offsetWidth;
+      wrapper.classList.add(type + "-active");
+      let ended = false;
+      function cleanup() {
+        if (!ended) {
+          ended = true;
+          wrapper.classList.remove(type, type + "-active");
+          resolve();
+        }
+      }
+      wrapper.addEventListener("transitionend", cleanup, { once: true });
+      setTimeout(cleanup, DURATION + 50);
+    });
+  }
+
+  function animateIn() {
+    wrapper.classList.add("pt-enter");
+    void wrapper.offsetWidth;
+    wrapper.classList.add("pt-enter-active");
+    setTimeout(() => {
+      wrapper.classList.remove("pt-enter", "pt-enter-active");
+    }, DURATION + 50);
+  }
+  window.addEventListener("DOMContentLoaded", animateIn);
+  window.addEventListener("pageshow", animateIn);
+
+  document.addEventListener("click", function (e) {
+    const a = e.target.closest("a");
+    if (!a) return;
+    const href = a.getAttribute("href");
+    if (
+      a.hasAttribute("target") ||
+      a.hasAttribute("download") ||
+      a.hasAttribute("data-no-transition") ||
+      !href ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:") ||
+      (href.startsWith("#") &&
+        location.pathname + location.search ===
+          location.pathname + location.search) ||
+      e.ctrlKey ||
+      e.metaKey ||
+      e.shiftKey ||
+      e.altKey
+    )
+      return;
+    try {
+      const url = new URL(href, location.href);
+      if (url.origin !== location.origin) return;
+    } catch {
+      return;
+    }
+    e.preventDefault();
+    runTransition("pt-exit").then(() => {
+      window.location.href = href;
+    });
+  });
+})();
+
 VANTA.GLOBE({
   el: "#vanta-globe",
   mouseControls: true,
@@ -76,53 +156,3 @@ document
     });
   });
 
-(function () {
-  const btn = document.getElementById("back-to-top");
-  if (!btn) return;
-
-  const showAt = 200; // px scrolled before showing
-  let pulseTimeout;
-
-  function checkScroll() {
-    const scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrolled > showAt) {
-      btn.classList.add("show");
-      // Add one-time signal (bounce + pulse)
-      btn.classList.add("signal");
-      clearTimeout(pulseTimeout);
-      pulseTimeout = setTimeout(() => btn.classList.remove("signal"), 3000);
-    } else {
-      btn.classList.remove("show");
-      btn.classList.remove("signal");
-    }
-  }
-
-  // Smooth scroll to top on click
-  btn.addEventListener("click", function (e) {
-    e.preventDefault();
-    // use smooth behavior; fallback simple scroll if not supported
-    if ("scrollBehavior" in document.documentElement.style) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      // simple instant fallback
-      window.scrollTo(0, 0);
-    }
-    // hide after click
-    btn.classList.remove("show");
-  });
-
-  // show/hide on scroll with throttle
-  let ticking = false;
-  window.addEventListener("scroll", function () {
-    if (!ticking) {
-      window.requestAnimationFrame(function () {
-        checkScroll();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-
-  // initial check
-  checkScroll();
-})();
