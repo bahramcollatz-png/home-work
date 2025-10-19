@@ -100,7 +100,7 @@
             class="mt-4 text-xl md:text-2xl font-medium flex flex-wrap justify-center gap-2"
           >
             <span
-              class="px-4 py-1 bg-indigo-700/50 text-indigo-300 rounded-full"
+              class="px-4 py-1 bg-blue-700/50 text-indigo-300 rounded-full"
               >Full Stack Developer</span
             >
             <span
@@ -354,7 +354,7 @@
               <div
                 class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 text-2xl"
               >
-                  🖥️
+                🖥️
               </div>
             </div>
             <div class="p-6">
@@ -1063,7 +1063,7 @@
       class="fixed right-4 bottom-10 z-50 w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400"
     >
       <svg
-      style="width: 20px; height: 20px;"
+        style="width: 20px; height: 20px"
         xmlns="http://www.w3.org/2000/svg"
         class="ionicon"
         viewBox="0 0 512 512"
@@ -1079,59 +1079,5 @@
       </svg>
     </button>
   </body>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const backToTopButton = document.getElementById("back-to-top");
-
-      // Show/hide button based on scroll position
-      window.addEventListener("scroll", function () {
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.add("show");
-        } else {
-          backToTopButton.classList.remove("show");
-        }
-      });
-
-      // Smooth scroll to top with enhanced effect
-      backToTopButton.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        // Add a temporary click effect
-        backToTopButton.style.transform = "scale(0.9)";
-        setTimeout(() => {
-          backToTopButton.style.transform = "scale(1.1)";
-        }, 150);
-
-        // Smooth scroll to top
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-
-        // Reset transform after animation
-        setTimeout(() => {
-          backToTopButton.style.transform = "";
-        }, 500);
-      });
-
-      // Add a subtle glow effect when button first appears
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Button is visible in viewport
-            backToTopButton.style.boxShadow =
-              "0 6px 25px rgba(99, 102, 241, 0.8)";
-            setTimeout(() => {
-              backToTopButton.style.boxShadow = "";
-            }, 1000);
-          }
-        });
-      });
-
-      // Start observing the button
-      if (backToTopButton) {
-        observer.observe(backToTopButton);
-      }
-    });
-  </script>
+  <script src="./top-to-bottom.js"></script>
 </html>
