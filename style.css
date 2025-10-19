@@ -112,7 +112,34 @@ body {
   padding: 10px 60px;
   font-size: 14px;
 }
-#Artificial-Intelligence,
-#Python-Development,
-#Front-end{
+/* course specific IDs intentionally left unstyled here */
+
+/* Hero background using project image */
+.hero {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.hero::before {
+  /* dark overlay for readability */
+  content: "";
+  position: absolute;
+  inset: 0;
+  
+
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.521), rgba(17,24,19,0.6)),
+radial-gradient(ellipse at center, rgba(17,24,19,0) 40%, rgba(17,24,19,0.45) 100%);
+ 
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; /* sit above overlay */
+  z-index: 20;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    background-position: center 30%;
+  }
 }
