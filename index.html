@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hasibullah Hamidi | Full Stack Developer & Educator</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%234f46e5'/%3E%3Ctext x='50' y='50' font-size='50' fill='%23fff' text-anchor='middle' dy='.3em' font-family='Arial, sans-serif' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-900 text-white min-h-screen">
+    <div id="vanta-globe"></div>
+    <div id="page-wrapper" class="content-wrapper">
+      <div class="absolute top-6 right-6">
+        <div class="relative">
+          <div
+            class="relative group"
+            x-data="{ open: false }"
+            @mouseenter="open = true"
+            @mouseleave="open = false"
+          >
+            <button
+              class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 glow"
+            >
+              <i data-feather="globe"></i>
+              <span>English</span>
+              <i
+                data-feather="chevron-down"
+                class="w-4 h-4 transition-transform duration-200"
+                :class="{ 'transform rotate-180': open }"
+              ></i>
+            </button>
+            <div
+              class="absolute right-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg z-50 transition-all duration-200 origin-top"
+              x-show="open"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-150"
+              x-transition:leave-start="opacity-100 scale-100"
+              x-transition:leave-end="opacity-0 scale-95"
+              style="display: none"
+            >
+              <div class="py-1">
+                <a
+                  href="#"
+                  @click.prevent="document.documentElement.lang='en'; open = false"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >English</a
+                >
+                <a
+                  href="#"
+                  @click.prevent="document.documentElement.lang='prs'; open = false"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >دری</a
+                >
+                <a
+                  href="#"
+                  @click.prevent="document.documentElement.lang='ps'; open = false"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >پښتو</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+      
+        class="min-h-screen flex items-center justify-center text-center px-4 py-16 hero"
+        style="
+          background-image: url('./images/hiroyoshi-urushima-vfRkE_9wuPo-unsplash.webp');
+          
+        "
+      >
+        <div class="max-w-4xl mx-auto px-4 hero-content">
+          <div class="relative inline-block mb-8">
+            <img
+              class="w-40 h-40 rounded-full mx-auto border-4 border-indigo-500 shadow-xl hover-grow"
+              alt="Hasibullah Hamidi"
+              src="./images/profile.jpg"
+            />
+          </div>
+
+          <h1
+            class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500"
+          >
+            Hasibullah Hamidi
+          </h1>
+
+          <div
+            class="mt-4 text-xl md:text-2xl font-medium flex flex-wrap justify-center gap-2"
+          >
+            <span
+              class="px-4 py-1 bg-blue-700/50 text-indigo-300 rounded-full"
+              >Full Stack Developer</span
+            >
+            <span
+              class="px-4 py-1 bg-purple-700/50 text-purple-300 rounded-full"
+              >ICT Educator</span
+            >
+            <span class="px-4 py-1 bg-blue-700/50 text-blue-300 rounded-full"
+              >AI Enthusiast</span
+            >
+          </div>
+
+          <p
+            class="mt-6 max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed"
+          >
+            I transform complex problems into elegant software solutions and
+            empower the next generation of developers with practical,
+            industry-relevant skills.
+          </p>
+          <div
+            class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto"
+          >
+            <a
+              href="#courses-section"
+              class="flex items-center justify-center gap-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all duration-300 hover-grow"
+            >
+              <svg
+                fill="#fff"
+                width="40px"
+                height="40px"
+                viewBox="0 0 256 256"
+                id="Flat"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M224,64,128,96,32,64l96-32Z" opacity="0.02" />
+                <path
+                  d="M226.52979,56.41016l-96-32a8.00672,8.00672,0,0,0-5.05958,0L29.6239,56.35889l-.00976.00341-.14393.04786c-.02819.00927-.053.02465-.08105.03442a7.91407,7.91407,0,0,0-1.01074.42871c-.03748.019-.07642.03516-.11353.05469a7.97333,7.97333,0,0,0-.93139.58325c-.06543.04688-.129.09522-.19288.144a8.09113,8.09113,0,0,0-.81872.71119c-.02374.02416-.04443.05053-.06787.0747a8.03121,8.03121,0,0,0-.66107.783c-.04157.05567-.0846.10986-.12476.16675a8.00867,8.00867,0,0,0-.56714.92993c-.02582.04981-.04809.10083-.07287.15112a7.93932,7.93932,0,0,0-.40522.97608c-.01062.03149-.0238.06128-.034.093a7.95072,7.95072,0,0,0-.26288,1.08544c-.01337.07666-.024.15308-.0351.23A8.02889,8.02889,0,0,0,24,64v80a8,8,0,0,0,16,0V75.09985L73.58514,86.29492a63.97188,63.97188,0,0,0,20.42945,87.89746,95.88127,95.88127,0,0,0-46.48383,37.4375,7.9997,7.9997,0,1,0,13.40235,8.73828,80.023,80.023,0,0,1,134.1333,0,7.99969,7.99969,0,1,0,13.40234-8.73828,95.87928,95.87928,0,0,0-46.48346-37.43725,63.97209,63.97209,0,0,0,20.42957-87.89771l44.11493-14.70508a8.0005,8.0005,0,0,0,0-15.17968ZM176,120A48,48,0,1,1,89.34875,91.54932l36.12146,12.04052a8.00672,8.00672,0,0,0,5.05958,0l36.12146-12.04052A47.85424,47.85424,0,0,1,176,120Zm-9.29791-45.3335c-.01984.00708-.03992.01294-.05976.02L128,87.56738,89.35785,74.68652c-.02033-.00732-.04083-.01318-.06122-.0205L57.29834,64,128,40.43262,198.70166,64Z"
+                />
+              </svg>
+              My Courses
+            </a>
+            <a
+              href="#ai-tools"
+              class="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300 hover-grow"
+              data-scroll-to
+            >
+              <i data-feather="cpu"></i>
+              <svg
+                style="height: 40px; width: 40px"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke-width="1.5"
+                class="h-6 w-6"
+                viewBox="-0.17090198558635983 0.482230148717937 41.14235318283891 40.0339509076386"
+              >
+                <text x="-9999" y="-9999">ChatGPT</text>
+                <path
+                  d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835A9.964 9.964 0 0 0 18.306.5a10.079 10.079 0 0 0-9.614 6.977 9.967 9.967 0 0 0-6.664 4.834 10.08 10.08 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 7.516 3.35 10.078 10.078 0 0 0 9.617-6.981 9.967 9.967 0 0 0 6.663-4.834 10.079 10.079 0 0 0-1.243-11.813zM22.498 37.886a7.474 7.474 0 0 1-4.799-1.735c.061-.033.168-.091.237-.134l7.964-4.6a1.294 1.294 0 0 0 .655-1.134V19.054l3.366 1.944a.12.12 0 0 1 .066.092v9.299a7.505 7.505 0 0 1-7.49 7.496zm-16.106-6.88a7.471 7.471 0 0 1-.894-5.023c.06.036.162.099.237.141l7.964 4.6a1.297 1.297 0 0 0 1.308 0l9.724-5.614v3.888a.12.12 0 0 1-.048.103l-8.051 4.649a7.504 7.504 0 0 1-10.24-2.744zM4.297 13.62A7.469 7.469 0 0 1 8.2 10.333c0 .068-.004.19-.004.274v9.201a1.294 1.294 0 0 0 .654 1.132l9.723 5.614-3.366 1.944a.12.12 0 0 1-.114.01L7.04 23.856a7.504 7.504 0 0 1-2.743-10.237zm27.658 6.437l-9.724-5.615 3.367-1.943a.121.121 0 0 1 .113-.01l8.052 4.648a7.498 7.498 0 0 1-1.158 13.528v-9.476a1.293 1.293 0 0 0-.65-1.132zm3.35-5.043a7.395 7.395 0 0 0-.236-.141l-7.965-4.6a1.298 1.298 0 0 0-1.308 0l-9.723 5.614v-3.888a.12.12 0 0 1 .048-.103l8.05-4.645a7.497 7.497 0 0 1 11.135 7.763zm-21.063 6.929l-3.367-1.944a.12.12 0 0 1-.065-.092v-9.299a7.497 7.497 0 0 1 12.293-5.756 6.94 6.94 0 0 0-.236.134l-7.965 4.6a1.294 1.294 0 0 0-.654 1.132l-.006 11.225zM16.071 18l4.33-2.501 4.332 2.5v5l-4.331 2.5-4.331-2.5V18z"
+                  fill="currentColor"
+                />
+              </svg>
+              AI Tools
+            </a>
+            <a
+              href="#contact"
+              class="flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover-grow"
+            >
+              <i data-feather="send"></i>
+              <svg
+                style="height: 40px"
+                xmlns="http://www.w3.org/2000/svg"
+                class="ionicon"
+                viewBox="0 0 512 512"
+              >
+                <rect
+                  x="48"
+                  y="96"
+                  width="416"
+                  height="320"
+                  rx="40"
+                  ry="40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                  d="M112 160l144 112 144-112"
+                />
+              </svg>
+              Contact Me
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Courses Section -->
+    <section id="courses-section" class="py-20 px-4 bg-gray-900">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white">
+          My Courses
+        </h2>
+        <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
+          Invest in your future. Choose a plan that aligns with your career
+          goals.
+        </p>
+      </div>
+      <div class="max-w-7xl mx-auto mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            id="Artificial-Intelligence"
+            class="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                alt="Artificial Intelligence (AI) for Everyone"
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                src="./images/ai-course.jpg"
+              />
+              <div
+                class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 text-2xl"
+              >
+                🤖
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors duration-300"
+              >
+                Artificial Intelligence (AI) for Everyone
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                Beginner-friendly course to understand AI, its impact on
+                society, and practical usage of AI tools in daily life — no
+                coding required.
+              </p>
+              <div class="mb-4">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="bg-indigo-900 text-indigo-300 text-xs px-2 py-1 rounded-full"
+                    >3 Plans Available</span
+                  >
+                  <span
+                    class="bg-green-900 text-green-300 text-xs px-2 py-1 rounded-full"
+                    >Live Instruction</span
+                  >
+                  <span
+                    class="bg-blue-900 text-blue-300 text-xs px-2 py-1 rounded-full"
+                    >Project Based</span
+                  >
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl font-bold text-indigo-400"
+                    >2,000 AFN</span
+                  >
+                  <span class="text-sm text-gray-500 line-through"
+                    >3,000 AFN</span
+                  >
+                </div>
+              </div>
+              <button
+                onclick="window.location.href='./courses/ai-dev-page.html'"
+                class="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-300 group-hover:shadow-lg"
+              >
+                View Plans
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="Python-Development"
+            class="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                alt="Python-Development"
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                src="./images/python-course.jpg"
+              />
+              <div
+                class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 text-2xl"
+              >
+                🐍
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors duration-300"
+              >
+                Python Development
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                From basic scripts to complex applications, master the world's
+                most popular programming language.
+              </p>
+              <div class="mb-3">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="bg-indigo-900 text-indigo-300 text-xs px-2 py-1 rounded-full"
+                    >3 Plans Available</span
+                  >
+                  <span
+                    class="bg-green-900 text-green-300 text-xs px-2 py-1 rounded-full"
+                    >Live Instruction</span
+                  >
+                  <span
+                    class="bg-blue-900 text-blue-300 text-xs px-2 py-1 rounded-full"
+                    >Project Based</span
+                  >
+                </div>
+              </div>
+              <div class="mb-0">
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl font-bold text-indigo-400"
+                    >2,500 AFN</span
+                  >
+                  <span class="text-sm text-gray-500 line-through"
+                    >3,500 AFN</span
+                  >
+                </div>
+                <br />
+                <br />
+              </div>
+              <button
+                onclick="window.location.href='./courses/python_programming_page.html'"
+                class="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-300 group-hover:shadow-lg"
+              >
+                View Plans
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="Front-end"
+            class="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                alt="Front-end Web Development"
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                src="./images/frontend-course.jpg"
+              />
+              <div
+                class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 text-2xl"
+              >
+                🖥️
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors duration-300"
+              >
+                Front-end Web Development
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                Build beautiful, responsive, and interactive user interfaces
+                with modern web technologies.
+              </p>
+              <div class="mb-4">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="bg-indigo-900 text-indigo-300 text-xs px-2 py-1 rounded-full"
+                    >3 Plans Available</span
+                  >
+                  <span
+                    class="bg-green-900 text-green-300 text-xs px-2 py-1 rounded-full"
+                    >Live Instruction</span
+                  >
+                  <span
+                    class="bg-blue-900 text-blue-300 text-xs px-2 py-1 rounded-full"
+                    >Project Based</span
+                  >
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl font-bold text-indigo-400"
+                    >2,500 AFN</span
+                  >
+                  <span class="text-sm text-gray-500 line-through"
+                    >3,500 AFN</span
+                  >
+                </div>
+                <br />
+                <br />
+              </div>
+              <button
+                onclick="window.location.href='./courses/front-end-page.html'"
+                class="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-300 group-hover:shadow-lg"
+              >
+                View Plans
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- AI Tools Section -->
+    <section id="ai-tools" class="py-20 px-4 bg-gray-900">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white">
+          Recommended AI Tools
+        </h2>
+        <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
+          A curated list of powerful AI websites and tools that I use and
+          recommend.
+        </p>
+      </div>
+      <div class="max-w-xl mx-auto mb-12">
+        <div
+          class="relative"
+          style="display: flex; align-items: center; position: relative"
+        >
+          <input
+            placeholder="Search by name or tag (e.g., Writing, Video)..."
+            class="w-full pl-10 pr-4 py-3 rounded-full border border-gray-700 bg-gray-800 text-white focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 outline-none shadow-sm"
+            type="text"
+          />
+          <svg
+            style="
+              width: 20px;
+              height: 20px;
+              order: -1;
+              position: absolute;
+              transform: translate(50%, 0%);
+            "
+            xmlns="http://www.w3.org/2000/svg"
+            class="ionicon"
+            viewBox="0 0 512 512"
+          >
+            <path
+              d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+              fill="none"
+              stroke="currentColor"
+              stroke-miterlimit="10"
+              stroke-width="32"
+            />
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
+              stroke-width="32"
+              d="M338.29 338.29L448 448"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <div
+          style="position: relative; overflow: hidden"
+          class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col border border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+        >
+          <div class="flex items-start gap-4">
+            <img
+              style="max-height: 100%"
+              alt="Google Gemini logo"
+              class="w-16 h-16 rounded-lg object-cover bg-gray-700"
+              src="./images/gemni.png"
+            />
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <h3 class="text-lg font-bold text-white">Google Gemini</h3>
+                <span
+                  id="google-gemni"
+                  class="text-xs font-semibold px-2.5 py-0.5 bg-sky-900 text-sky-300"
+                  >Freemium</span
+                >
+              </div>
+              <p class="text-sm text-indigo-400 font-medium">Generative AI</p>
+            </div>
+          </div>
+          <p class="mt-4 text-gray-300 text-sm flex-grow">
+            Google's powerful multimodal AI for advanced reasoning,
+            conversation, and code generation.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Writing</span
+            >
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Productivity</span
+            >
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Code</span
+            >
+          </div>
+          <a
+            href="https://gemini.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+          >
+            <svg
+              style="width: 20px; height: 20px"
+              xmlns="http://www.w3.org/2000/svg"
+              class="ionicon"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="32"
+              />
+              <circle
+                cx="256"
+                cy="256"
+                r="80"
+                fill="none"
+                stroke="currentColor"
+                stroke-miterlimit="10"
+                stroke-width="32"
+              />
+            </svg>
+            Visit Site <i data-feather="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <div
+          style="position: relative; overflow: hidden"
+          class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col border border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+        >
+          <div class="flex items-start gap-4">
+            <img
+              style="max-height: 100%"
+              alt="ChatGPT logo"
+              class="w-16 h-16 rounded-lg object-cover bg-gray-700"
+              src="./images/chat-gpt.png"
+            />
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <h3 class="text-lg font-bold text-white">ChatGPT</h3>
+                <span
+                  id="chat-gpt"
+                  class="text-xs font-semibold px-2.5 py-0.5 bg-sky-900 text-sky-300"
+                  >Freemium</span
+                >
+              </div>
+              <p class="text-sm text-indigo-400 font-medium">Generative AI</p>
+            </div>
+          </div>
+          <p class="mt-4 text-gray-300 text-sm flex-grow">
+            The original AI chat assistant for generating human-like text and
+            assisting with a wide range of tasks.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Writing</span
+            >
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Productivity</span
+            >
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Chat</span
+            >
+          </div>
+          <a
+            href="https://chat.openai.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+          >
+            <svg
+              style="width: 20px; height: 20px"
+              xmlns="http://www.w3.org/2000/svg"
+              class="ionicon"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="32"
+              />
+              <circle
+                cx="256"
+                cy="256"
+                r="80"
+                fill="none"
+                stroke="currentColor"
+                stroke-miterlimit="10"
+                stroke-width="32"
+              />
+            </svg>
+            Visit Site <i data-feather="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <div
+          style="position: relative; overflow: hidden"
+          class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col border border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+        >
+          <div class="flex items-start gap-4">
+            <img
+              style="max-height: 100%"
+              alt="Midjourney logo"
+              class="w-16 h-16 rounded-lg object-cover bg-gray-700"
+              src="./images/midjourney.png"
+            />
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <h3 class="text-lg font-bold text-white">Midjourney</h3>
+                <span
+                  id="midjourney"
+                  class="text-xs font-semibold px-2.5 py-0.5 bg-rose-900 text-rose-300"
+                  >Paid</span
+                >
+              </div>
+              <p class="text-sm text-indigo-400 font-medium">
+                Image Generation
+              </p>
+            </div>
+          </div>
+          <p class="mt-4 text-gray-300 text-sm flex-grow">
+            A premier AI image generator that creates stunning visuals from
+            simple text prompts.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Art</span
+            >
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Design</span
+            >
+            <span class="text-xs text-gray-300 bg-gray-700 px-2 py-1 rounded-md"
+              >Inspiration</span
+            >
+          </div>
+
+          <a
+            href="https://www.midjourney.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+          >
+            <svg
+              style="width: 20px; height: 20px"
+              xmlns="http://www.w3.org/2000/svg"
+              class="ionicon"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="32"
+              />
+              <circle
+                cx="256"
+                cy="256"
+                r="80"
+                fill="none"
+                stroke="currentColor"
+                stroke-miterlimit="10"
+                stroke-width="32"
+              />
+            </svg>
+            Visit Site <i data-feather="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Modern Contact Section -->
+    <section
+      id="contact"
+      class="py-24 px-4 bg-gradient-to-br from-gray-900 to-gray-800"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2
+            class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 mb-4"
+          >
+            Let's Connect
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Got a project or want to collaborate? Drop me a message or connect
+            on socials.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="relative">
+            <div class="absolute rounded-2xl blur-lg opacity-30"></div>
+            <div
+              class="relative bg-gray-800 p-8 md:p-10 rounded-2xl shadow-xl border border-gray-700"
+            >
+              <h3 class="text-2xl font-bold text-white mb-6">Send a Message</h3>
+              <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-gray-300 mb-1"
+                      >Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400 transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-medium text-gray-300 mb-1"
+                      >Email</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400 transition-all"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    for="subject"
+                    class="block text-sm font-medium text-gray-300 mb-1"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    id="subject"
+                    class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400 transition-all"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="message"
+                    class="block text-sm font-medium text-gray-300 mb-1"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="4"
+                    class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-400 transition-all"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg transform hover:scale-[1.02]"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="space-y-8">
+            <div
+              class="flex items-start gap-6 p-6 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-indigo-500 transition-all"
+            >
+              <div class="bg-indigo-600/20 p-3 rounded-lg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-6 h-6 text-indigo-400"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-1">Email Me</h3>
+                <a
+                  href="mailto:hasibullahhamidi@yahoo.com"
+                  class="text-gray-300 hover:text-indigo-400 transition-colors"
+                  >hasibullahhamidi@yahoo.com</a
+                >
+                <a
+                  href="https://github.com/hasibullahh"
+                  target="_blank"
+                  class="ml-4 inline-block"
+                >
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="flex items-start gap-6 p-6 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-purple-500 transition-all"
+            >
+              <div class="bg-purple-600/20 p-3 rounded-lg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-6 h-6 text-purple-400"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-1">Call/WhatsApp</h3>
+                <a
+                  href="https://wa.me/930730753056"
+                  target="_blank"
+                  class="text-gray-300 hover:text-purple-400 transition-colors"
+                  >+93 (0) 730 753 056</a
+                >
+                <a
+                  href="https://twitter.com/hasibullahh"
+                  target="_blank"
+                  class="ml-4 inline-block"
+                >
+                </a>
+              </div>
+            </div>
+            <div
+              class="flex items-start gap-6 p-6 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all"
+            >
+              <div class="bg-gray-600/20 p-3 rounded-lg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-6 h-6 text-gray-400"
+                >
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-1">GitHub</h3>
+                <a
+                  href="https://github.com/hasibullahh"
+                  target="_blank"
+                  class="text-gray-300 hover:text-gray-400 transition-colors"
+                  >github.com/hasibullahh</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="script.js"></script>
+    <!-- Modern Footer -->
+    <footer
+      class="bg-gray-900 border-t border-gray-800 py-8 px-4 md:px-6 lg:px-8"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div class="space-y-6">
+            <div class="flex items-center gap-2">
+              <div
+                class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center"
+              >
+                <span class="text-white font-bold text-xl">H</span>
+              </div>
+              <span class="text-xl font-bold text-white"
+                >Hasibullah Hamidi</span
+              >
+            </div>
+            <p class="text-gray-400">
+              Full Stack Developer & Educator passionate about building digital
+              solutions and sharing knowledge.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="https://github.com/hasibullahh"
+                target="_blank"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i data-feather="github"></i>
+              </a>
+              <a
+                href="https://linkedin.com/in/hasibullahh"
+                target="_blank"
+                class="text-gray-400 hover:text-blue-500 transition-colors"
+              >
+                <i data-feather="linkedin"></i>
+              </a>
+              <a
+                href="https://twitter.com/hasibullahh"
+                target="_blank"
+                class="text-gray-400 hover:text-blue-400 transition-colors"
+              >
+                <i data-feather="twitter"></i>
+              </a>
+              <a
+                href="https://youtube.com/@hasibullahh"
+                target="_blank"
+                class="text-gray-400 hover:text-red-500 transition-colors"
+              >
+                <i data-feather="youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-6">Quick Links</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#courses-section"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Courses</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#ai-tools"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >AI Tools</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Contact</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Blog</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-6">Courses</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >AI for Everyone</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Python Development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Web Development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >JavaScript Mastery</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-6">Legal</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Cookie Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  >Refund Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-xs">
+            © 2025 Hasibullah Hamidi. All rights reserved.
+          </p>
+          <p class="text-gray-400 text-xs mt-4 md:mt-0">
+            Designed & Built with <span class="text-indigo-400">❤️</span> in
+            Afghanistan
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Initialize feather icons for footer -->
+    <script>
+      feather.replace();
+    </script>
+    <!-- Back to Top button -->
+    <button
+      id="back-to-top"
+      aria-label="Back to top"
+      title="Back to top"
+      class="fixed right-4 bottom-10 z-50 w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+    >
+      <svg
+        style="width: 20px; height: 20px"
+        xmlns="http://www.w3.org/2000/svg"
+        class="ionicon"
+        viewBox="0 0 512 512"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="48"
+          d="M112 244l144-144 144 144M256 120v292"
+        />
+      </svg>
+    </button>
+  </body>
+  <script src="./top-to-bottom.js"></script>
+</html>
