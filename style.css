@@ -46,7 +46,7 @@ html {
   z-index: -1;
 }
 
-#back-to-top::after {
+/* #back-to-top::after {
   content: "";
   position: absolute;
   top: 0;
@@ -55,9 +55,9 @@ html {
   bottom: 0;
   border-radius: 50%;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  animation: ripple-signal 2s infinite 0.7s;
+  animation: ripple-signal 3s infinite 0.7s;
   z-index: -2;
-}
+} */
 
 @keyframes ripple-signal {
   0% {
