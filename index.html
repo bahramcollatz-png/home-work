@@ -21,7 +21,7 @@
     <div id="vanta-globe"></div>
     <div id="page-wrapper" class="content-wrapper">
       <div class="absolute top-6 right-6">
-        <div class="relative">
+        <div style="z-index: 1" class="relative">
           <div
             class="relative group"
             x-data="{ open: false }"
@@ -31,7 +31,42 @@
             <button
               class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 glow"
             >
-              <i data-feather="globe"></i>
+              <svg
+              style="width: 20px; height: 20px;"
+                xmlns="http://www.w3.org/2000/svg"
+                class="ionicon"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <path
+                  d="M256 48c-58.07 0-112.67 93.13-112.67 208S197.93 464 256 464s112.67-93.13 112.67-208S314.07 48 256 48z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <path
+                  d="M117.33 117.33c38.24 27.15 86.38 43.34 138.67 43.34s100.43-16.19 138.67-43.34M394.67 394.67c-38.24-27.15-86.38-43.34-138.67-43.34s-100.43 16.19-138.67 43.34"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                  d="M256 48v416M464 256H48"
+                />
+              </svg>
               <span>English</span>
               <i
                 data-feather="chevron-down"
@@ -76,7 +111,6 @@
       </div>
 
       <div
-      
         class="min-h-screen flex items-center justify-center text-center px-4 py-16 hero bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
       >
         <div class="max-w-4xl mx-auto px-4 hero-content">
@@ -97,8 +131,7 @@
           <div
             class="mt-4 text-xl md:text-2xl font-medium flex flex-wrap justify-center gap-2"
           >
-            <span
-              class="px-4 py-1 bg-blue-700/50 text-indigo-300 rounded-full"
+            <span class="px-4 py-1 bg-blue-700/50 text-indigo-300 rounded-full"
               >Full Stack Developer</span
             >
             <span
