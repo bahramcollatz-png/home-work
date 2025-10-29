@@ -25,6 +25,59 @@ document.querySelectorAll(".hover-grow").forEach((item) => {
 // Initialize feather icons
 feather.replace();
 
+// Language selector: native-name label + persistence
+(function () {
+  const STORAGE_KEY = "preferredLanguage";
+  const nativeNames = {
+    en: "English",
+    fa: "دری",
+    ps: "پښتو",
+  };
+
+  function applyLabel(langCode) {
+    const labelEl = document.getElementById("lang-label");
+    if (!labelEl) return;
+    const name = nativeNames[langCode] || nativeNames.en;
+    labelEl.textContent = name;
+  }
+
+  function getSavedLanguage() {
+    try {
+      return localStorage.getItem(STORAGE_KEY) || "fa";
+    } catch (_) {
+      return "fa";
+    }
+  }
+
+  function saveLanguage(langCode) {
+    try {
+      localStorage.setItem(STORAGE_KEY, langCode);
+    } catch (_) {
+      // ignore
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initial label from saved preference
+    applyLabel(getSavedLanguage());
+
+    // Handle option selection
+    document.querySelectorAll(".lang-option").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        const lang = el.getAttribute("data-lang") || "fa";
+        saveLanguage(lang);
+        applyLabel(lang);
+      });
+      el.addEventListener("keydown", (e) => {
+        if (e.key === " " || e.key === "Spacebar") {
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+  });
+})();
+
 // Enhanced smooth scrolling with offset
 // Smooth scroll with animation for contact section
 document.querySelectorAll('a[href="#contact"]').forEach((anchor) => {

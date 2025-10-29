@@ -27,12 +27,19 @@
             x-data="{ open: false }"
             @mouseenter="open = true"
             @mouseleave="open = false"
+            @keydown.escape="open = false"
           >
             <button
-              class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 glow"
+              id="lang-button"
+              type="button"
+              aria-haspopup="listbox"
+              :aria-expanded="open.toString()"
+              aria-controls="lang-menu"
+              @click="open = !open"
+              class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-all"
             >
               <svg
-              style="width: 20px; height: 20px;"
+                style="width: 20px; height: 20px"
                 xmlns="http://www.w3.org/2000/svg"
                 class="ionicon"
                 viewBox="0 0 512 512"
@@ -67,7 +74,7 @@
                   d="M256 48v416M464 256H48"
                 />
               </svg>
-              <span>English</span>
+              <span id="lang-label">English</span>
               <i
                 data-feather="chevron-down"
                 class="w-4 h-4 transition-transform duration-200"
@@ -75,6 +82,8 @@
               ></i>
             </button>
             <div
+              id="lang-menu"
+              role="menu"
               class="absolute right-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg z-50 transition-all duration-200 origin-top"
               x-show="open"
               x-transition:enter="transition ease-out duration-200"
@@ -87,21 +96,24 @@
             >
               <div class="py-1">
                 <a
-                  href="#"
-                  
-                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  href="./index.html"
+                  role="menuitem"
+                  data-lang="en"
+                  class="lang-option block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
                   >English</a
                 >
                 <a
                   href="./persian_transalation/index.html"
-                  
-                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  role="menuitem"
+                  data-lang="fa"
+                  class="lang-option block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
                   >دری</a
                 >
                 <a
                   href="#"
-                  
-                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  role="menuitem"
+                  data-lang="ps"
+                  class="lang-option block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
                   >پښتو</a
                 >
               </div>
@@ -111,7 +123,7 @@
       </div>
 
       <div
-        class="min-h-screen flex items-center justify-center text-center px-4 py-16 hero bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+        class="min-h-screen flex items-center justify-center text-center px-4 py-16 hero bg-gray-900"
       >
         <div class="max-w-4xl mx-auto px-4 hero-content">
           <div class="relative inline-block mb-8">
@@ -123,7 +135,8 @@
           </div>
 
           <h1
-            class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500"
+            style="color: #6366f1"
+            class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent"
           >
             Hasibullah Hamidi
           </h1>
@@ -131,21 +144,12 @@
           <div
             class="mt-4 text-xl md:text-2xl font-medium flex flex-wrap justify-center gap-2"
           >
-            <span class="px-4 py-1 bg-blue-700/50 text-indigo-300 rounded-full"
-              >Full Stack Developer</span
-            >
-            <span
-              class="px-4 py-1 bg-purple-700/50 text-purple-300 rounded-full"
-              >ICT Educator</span
-            >
-            <span class="px-4 py-1 bg-blue-700/50 text-blue-300 rounded-full"
-              >AI Enthusiast</span
-            >
+            <p style="color: #ddd; /* Tailwind's gray-400 */">
+              Full Stack Developer & ICT Educator
+            </p>
           </div>
 
-          <p
-            class="mt-6 max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed"
-          >
+          <p class="mt-6 max-w-2xl mx-auto text-lg text-white leading-relaxed">
             I transform complex problems into elegant software solutions and
             empower the next generation of developers with practical,
             industry-relevant skills.
@@ -154,8 +158,9 @@
             class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto"
           >
             <a
+              style="background-color: #4f46e5"
               href="my-courses.html"
-              class="flex items-center justify-center gap-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all duration-300 hover-grow"
+              class="flex items-center justify-center gap-3 text-white font-semibold py-3 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all duration-300 hover-grow"
             >
               <svg
                 fill="#fff"
@@ -174,7 +179,7 @@
             </a>
             <a
               href="ai-tools.html"
-              class="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300 hover-grow"
+              class="flex items-center justify-center bg-[#2563EB] gap-3 text-white font-semibold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300 hover-grow"
             >
               <i data-feather="cpu"></i>
               <svg
@@ -194,8 +199,9 @@
               AI Tools
             </a>
             <a
+              style="background-color: #25d366"
               href="contact.html"
-              class="flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover-grow"
+              class="flex items-center justify-center gap-3 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover-grow"
             >
               <i data-feather="send"></i>
               <svg

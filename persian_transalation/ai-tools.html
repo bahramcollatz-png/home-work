@@ -75,28 +75,48 @@
             recommend.
           </p>
         </div>
-        <div class="max-w-xl mx-auto mb-12">
-          <div class="relative">
-            <input
-              id="aiToolsSearch"
-              placeholder="Search AI tools (e.g., ChatGPT, Gemini, Writing)..."
-              class="w-full pl-10 pr-4 py-3 rounded-full border border-gray-700 bg-gray-800 text-white focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 outline-none shadow-sm"
-              type="text"
-            />
-            <svg
-              class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        <div class="max-w-3xl mx-auto mb-12">
+          <div class="flex items-center gap-3">
+            <div class="relative flex-1">
+              <input
+                id="aiToolsSearch"
+                placeholder="Search AI tools (e.g., ChatGPT, Gemini, Writing)..."
+                class="w-full pl-10 pr-4 py-3 rounded-full border border-gray-700 bg-gray-800 text-white focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 outline-none shadow-sm"
+                type="text"
               />
-            </svg>
+              <svg
+                class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+            <div class="relative inline-block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="ionicon w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                viewBox="0 0 512 512"
+              >
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M32 144h448M112 256h288M208 368h96"/>
+              </svg>
+              <select
+                id="priceFilter"
+                aria-label="Filter tools by price"
+                class="appearance-none bg-gray-800 border border-gray-700 text-gray-200 text-sm rounded-full py-2 pl-9 pr-8 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              >
+                <option value="all">Filter</option>
+                <option value="free">Free</option>
+                <option value="paid">Paid</option>
+              </select>
+            </div>
           </div>
         </div>
         <div
@@ -105,6 +125,7 @@
           <div
             style="position: relative; overflow: hidden"
             class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col border border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            data-price="free"
           >
             <div class="flex items-start gap-4">
               <img
@@ -180,6 +201,7 @@
           <div
             style="position: relative; overflow: hidden"
             class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col border border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            data-price="free"
           >
             <div class="flex items-start gap-4">
               <img
@@ -255,6 +277,7 @@
           <div
             style="position: relative; overflow: hidden"
             class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col border border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            data-price="paid"
           >
             <div class="flex items-start gap-4">
               <img
@@ -388,119 +411,103 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const searchInput = document.getElementById("aiToolsSearch");
+        const priceFilter = document.getElementById("priceFilter");
         const toolsContainer = document.querySelector(
           ".max-w-6xl.mx-auto.grid"
         );
-        const tools = document.querySelectorAll(
-          ".max-w-6xl.mx-auto.grid > div"
+        const tools = Array.from(
+          document.querySelectorAll(".max-w-6xl.mx-auto.grid > div")
         );
 
-        searchInput.addEventListener("input", function () {
-          const searchTerm = this.value.toLowerCase().trim();
+        function matchesSearch(tool, term) {
+          if (!term) return true;
+          const title = tool.querySelector("h3").textContent.toLowerCase();
+          const description = tool.querySelector("p").textContent.toLowerCase();
+          const tags = Array.from(tool.querySelectorAll(".text-xs"))
+            .map((tag) => tag.textContent.toLowerCase())
+            .join(" ");
+          return (
+            title.includes(term) || description.includes(term) || tags.includes(term)
+          );
+        }
 
-          if (searchTerm === "") {
-            // Show all tools and reset layout
-            tools.forEach((tool) => {
+        function matchesPrice(tool, price) {
+          if (!price || price === "all") return true;
+          const p = tool.getAttribute("data-price");
+          return p === price;
+        }
+
+        function applyFilters() {
+          const term = searchInput.value.toLowerCase().trim();
+          const price = priceFilter ? priceFilter.value : "all";
+
+          const matching = [];
+          const nonMatching = [];
+
+          tools.forEach((tool) => {
+            if (matchesSearch(tool, term) && matchesPrice(tool, price)) {
+              matching.push(tool);
+            } else {
+              nonMatching.push(tool);
+            }
+          });
+
+          if (matching.length > 0) {
+            nonMatching.forEach((tool) => (tool.style.display = "none"));
+            matching.forEach((tool, index) => {
               tool.style.display = "flex";
               tool.style.opacity = "1";
               tool.style.transform = "scale(1)";
-              tool.style.order = "";
-            });
-            toolsContainer.style.justifyContent = "center";
-            toolsContainer.style.gridTemplateColumns =
-              "repeat(auto-fit, minmax(300px, 1fr))";
-
-            // Remove no results message if it exists
-            const noResultsMsg = document.getElementById("noResultsMsg");
-            if (noResultsMsg) {
-              noResultsMsg.remove();
-            }
-          } else {
-            let matchingTools = [];
-            let nonMatchingTools = [];
-
-            tools.forEach((tool) => {
-              const title = tool.querySelector("h3").textContent.toLowerCase();
-              const description = tool
-                .querySelector("p")
-                .textContent.toLowerCase();
-              const tags = Array.from(tool.querySelectorAll(".text-xs"))
-                .map((tag) => tag.textContent.toLowerCase())
-                .join(" ");
-
-              if (
-                title.includes(searchTerm) ||
-                description.includes(searchTerm) ||
-                tags.includes(searchTerm)
-              ) {
-                matchingTools.push(tool);
-              } else {
-                nonMatchingTools.push(tool);
-              }
-            });
-
-            if (matchingTools.length > 0) {
-              // Hide non-matching tools
-              nonMatchingTools.forEach((tool) => {
-                tool.style.display = "none";
-              });
-
-              // Show and center matching tools
-              matchingTools.forEach((tool, index) => {
-                tool.style.display = "flex";
-                tool.style.opacity = "1";
-                tool.style.transform = "scale(1)";
-                tool.style.transition = "all 0.3s ease";
-
-                // Add a slight delay for animation effect
+              tool.style.transition = "all 0.3s ease";
+              setTimeout(() => {
+                tool.style.transform = "scale(1.02)";
                 setTimeout(() => {
-                  tool.style.transform = "scale(1.02)";
-                  setTimeout(() => {
-                    tool.style.transform = "scale(1)";
-                  }, 150);
-                }, index * 100);
-              });
+                  tool.style.transform = "scale(1)";
+                }, 150);
+              }, index * 100);
+            });
 
-              // Adjust grid layout based on number of results
-              if (matchingTools.length === 1) {
-                toolsContainer.style.justifyContent = "center";
-                toolsContainer.style.gridTemplateColumns =
-                  "repeat(1, minmax(300px, 400px))";
-              } else if (matchingTools.length === 2) {
-                toolsContainer.style.justifyContent = "center";
-                toolsContainer.style.gridTemplateColumns =
-                  "repeat(2, minmax(300px, 1fr))";
-              } else {
-                toolsContainer.style.justifyContent = "center";
-                toolsContainer.style.gridTemplateColumns =
-                  "repeat(auto-fit, minmax(300px, 1fr))";
-              }
+            if (matching.length === 1) {
+              toolsContainer.style.justifyContent = "center";
+              toolsContainer.style.gridTemplateColumns =
+                "repeat(1, minmax(300px, 400px))";
+            } else if (matching.length === 2) {
+              toolsContainer.style.justifyContent = "center";
+              toolsContainer.style.gridTemplateColumns =
+                "repeat(2, minmax(300px, 1fr))";
             } else {
-              // No matches found
-              tools.forEach((tool) => {
-                tool.style.display = "none";
-              });
+              toolsContainer.style.justifyContent = "center";
+              toolsContainer.style.gridTemplateColumns =
+                "repeat(auto-fit, minmax(300px, 1fr))";
+            }
 
-              // Show "No results" message
-              let noResultsMsg = document.getElementById("noResultsMsg");
-              if (!noResultsMsg) {
-                noResultsMsg = document.createElement("div");
-                noResultsMsg.id = "noResultsMsg";
-                noResultsMsg.className = "col-span-full text-center py-12";
-                noResultsMsg.innerHTML = `
-                  <div class="text-gray-400 text-lg">
-                    <svg class="w-16 h-16 mx-auto mb-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    <p>No AI tools found matching "${searchTerm}"</p>
-                    <p class="text-sm mt-2">Try searching for "ChatGPT", "Gemini", "Writing", or "Image"</p>
-                  </div>
-                `;
-                toolsContainer.appendChild(noResultsMsg);
-              }
+            const noResultsMsg = document.getElementById("noResultsMsg");
+            if (noResultsMsg) noResultsMsg.remove();
+          } else {
+            tools.forEach((tool) => (tool.style.display = "none"));
+
+            let noResultsMsg = document.getElementById("noResultsMsg");
+            if (!noResultsMsg) {
+              noResultsMsg = document.createElement("div");
+              noResultsMsg.id = "noResultsMsg";
+              noResultsMsg.className = "col-span-full text-center py-12";
+              noResultsMsg.innerHTML = `
+                <div class="text-gray-400 text-lg">
+                  <svg class="w-16 h-16 mx-auto mb-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <p>No AI tools found</p>
+                  <p class="text-sm mt-2">Try different keywords or filter</p>
+                </div>
+              `;
+              toolsContainer.appendChild(noResultsMsg);
             }
           }
-        });
+        }
+
+        searchInput.addEventListener("input", applyFilters);
+        if (priceFilter) priceFilter.addEventListener("change", applyFilters);
+        applyFilters();
       });
     </script>
   </body>

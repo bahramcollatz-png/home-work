@@ -45,6 +45,72 @@ document.querySelectorAll('a[href="#contact"]').forEach((anchor) => {
   });
 });
 
+// Language selector: native-name label + persistence
+(function () {
+  const STORAGE_KEY = "preferredLanguage";
+  const nativeNames = {
+    en: "English",
+    fa: "دری",
+    ps: "پښتو",
+  };
+
+  function applyLabel(langCode) {
+    const labelEl = document.getElementById("lang-label");
+    if (!labelEl) return;
+    const name = nativeNames[langCode] || nativeNames.en;
+    labelEl.textContent = name;
+  }
+
+  function getSavedLanguage() {
+    try {
+      return localStorage.getItem(STORAGE_KEY) || "en";
+    } catch (_) {
+      return "en";
+    }
+  }
+
+  function saveLanguage(langCode) {
+    try {
+      localStorage.setItem(STORAGE_KEY, langCode);
+    } catch (_) {
+      // ignore
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initial label from saved preference
+    applyLabel(getSavedLanguage());
+
+    // Handle option selection
+    document.querySelectorAll(".lang-option").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        const lang = el.getAttribute("data-lang") || "en";
+        saveLanguage(lang);
+        applyLabel(lang);
+        // Let navigation proceed (if href is set). No preventDefault here by default.
+      });
+      el.addEventListener("keydown", (e) => {
+        // Support selecting with Space when focused
+        if (e.key === " " || e.key === "Spacebar") {
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+
+    // Close menu when clicking outside (for keyboard/mouse parity)
+    const container = document.getElementById("lang-button")?.closest("[x-data]");
+    if (container) {
+      document.addEventListener("click", (evt) => {
+        if (!container.contains(evt.target)) {
+          // With Alpine present, set the open state via dispatch
+          container.__x?.updateElements?.();
+        }
+      });
+    }
+  });
+})();
+
 // Smooth scroll for other sections
 document
   .querySelectorAll('a[href^="#"]:not([href="#contact"])')
