@@ -1,6 +1,9 @@
 html {
   scroll-behavior: smooth;
 }
+body{
+  direction: rtl;
+}
 /* Back to Top button styles */
 
 /* Back to Top button with ripple signaling effect */
@@ -168,25 +171,25 @@ body {
 }
 #google-gemni {
   position: absolute;
-  top: 21;
-  right: -45px;
-  rotate: calc(45deg);
+  top: 14px;
+  left: -33px;
+  rotate: calc(-45deg);
   padding: 10px 50px;
   font-size: 14px;
 }
 #chat-gpt {
   position: absolute;
-  top: 21;
-  right: -45px;
-  rotate: calc(45deg);
+  top: 14px;
+  left: -33px;
+  rotate: calc(-45deg);
   padding: 10px 50px;
   font-size: 14px;
 }
 #midjourney {
   position: absolute;
-  top: 21;
-  right: -38px;
-  rotate: calc(45deg);
+  top: 21px;
+  left: -38px;
+  rotate: calc(-45deg);
   padding: 10px 60px;
   font-size: 14px;
 }

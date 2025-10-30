@@ -1,4 +1,3 @@
-
 VANTA.GLOBE({
   el: "#vanta-globe",
   mouseControls: true,
@@ -87,7 +86,8 @@ document.querySelectorAll('a[href="#contact"]').forEach((anchor) => {
         const lang = el.getAttribute("data-lang") || "en";
         saveLanguage(lang);
         applyLabel(lang);
-        // Let navigation proceed (if href is set). No preventDefault here by default.
+        // No preventDefault, allow navigation if href exists.
+        // Since localStorage is synchronous, this will persist across navigation.
       });
       el.addEventListener("keydown", (e) => {
         // Support selecting with Space when focused
@@ -103,7 +103,6 @@ document.querySelectorAll('a[href="#contact"]').forEach((anchor) => {
     if (container) {
       document.addEventListener("click", (evt) => {
         if (!container.contains(evt.target)) {
-          // With Alpine present, set the open state via dispatch
           container.__x?.updateElements?.();
         }
       });
@@ -141,4 +140,3 @@ document
       }
     });
   });
-
