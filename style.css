@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Vazir";
+  src: url("./fonts/vazir-font-v16.1.0/Vazir-Medium.woff2") format("woff2"),
+       url("./fonts/vazir-font-v16.1.0/Vazir-Medium.woff") format("woff"),
+       url("./fonts/vazir-font-v16.1.0/Vazir-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -146,7 +155,8 @@ body{
     btg-pulse 2s 0.7s infinite, btg-glow 1.8s 0.7s infinite;
 }
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Vazir", sans-serif;
+  font-weight: 500;
 }
 #vanta-globe {
   position: absolute;

@@ -362,6 +362,39 @@
       </div>
     </main>
 
+    <!-- Plan Selection Modal -->
+    <div id="plan-modal" class="fixed inset-0 z-[100] hidden">
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="relative mx-auto mt-24 w-full max-w-md px-4">
+        <div class="bg-gray-800 rounded-2xl border border-gray-700 shadow-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold">فرم ثبت نام پلان</h3>
+            <button id="plan-modal-close" class="text-gray-400 hover:text-white" aria-label="close">✕</button>
+          </div>
+          <form class="space-y-4" onsubmit="return false;">
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">اسم</label>
+              <input id="pm-first-name" type="text" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="اسم خود را وارد کنید" />
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">تخلص</label>
+              <input id="pm-last-name" type="text" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="تخلص خود را وارد کنید" />
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">شماره تماس</label>
+              <input id="pm-phone" type="tel" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="مثال: 07xxxxxxxx" />
+            </div>
+            <div class="pt-2 flex items-center justify-between">
+              <span id="pm-selected-plan" class="text-sm text-gray-400"></span>
+              <a id="pm-whatsapp" href="https://wa.me/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
+                واتساپ
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer
         class="   py-8 px-4 md:px-6 lg:px-8"
@@ -407,6 +440,50 @@
 
     <script>
       feather.replace();
+    </script>
+    <script>
+      (function () {
+        const modal = document.getElementById("plan-modal");
+        const closeBtn = document.getElementById("plan-modal-close");
+        const selectedPlanEl = document.getElementById("pm-selected-plan");
+        const waBtn = document.getElementById("pm-whatsapp");
+        const firstName = document.getElementById("pm-first-name");
+        const lastName = document.getElementById("pm-last-name");
+        const phone = document.getElementById("pm-phone");
+
+        function openModal(planLabel) {
+          selectedPlanEl.textContent = planLabel ? `پلان انتخاب شده: ${planLabel}` : "";
+          modal.classList.remove("hidden");
+        }
+
+        function closeModal() {
+          modal.classList.add("hidden");
+        }
+
+        // open on any pricing button click
+        document.querySelectorAll("main .grid button").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const label = btn.textContent.trim();
+            openModal(label);
+          });
+        });
+
+        // close handlers
+        closeBtn?.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        // build whatsapp link dynamically
+        function updateWaLink() {
+          const plan = selectedPlanEl.textContent.replace("پلان انتخاب شده: ", "");
+          const msg = `سلام، میخواهم در ${plan || "یکی از پلان ها"} ثبت نام کنم.\nاسم: ${firstName.value}\nتخلص: ${lastName.value}\nشماره: ${phone.value}`;
+          const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+          waBtn.setAttribute("href", url);
+        }
+        [firstName, lastName, phone].forEach((el) => el.addEventListener("input", updateWaLink));
+        updateWaLink();
+      })();
     </script>
     <script src="../top-to-bottom.js"></script>
   </body>
