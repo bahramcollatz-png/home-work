@@ -115,9 +115,7 @@
                 </h1>
               </div>
               <p class="text-gray-300 text-lg leading-relaxed">
-                Practical Python development course covering basics to advanced
-                topics: syntax, data structures, OOP, web development,
-                scripting, testing, and deployment — hands-on projects included.
+                دوره کاربردی توسعه پایتون که مباحث پایه تا پیشرفته را پوشش می‌دهد: سینتکس، ساختمان داده‌ها، OOP، توسعه وب، اسکریپت‌نویسی، تست و استقرار - شامل پروژه‌های عملی.
               </p>
               <div class="mt-6 flex flex-wrap gap-2">
                 <span
@@ -357,30 +355,33 @@
     </main>
 
     <!-- Plan Selection Modal -->
-    <div id="plan-modal" class="fixed inset-0 z-[100] hidden">
-      <div class="absolute inset-0 bg-black/60"></div>
+    <div id="plan-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="plan-modal-title">
+      <div class="absolute inset-0 bg-black/60" aria-hidden="true"></div>
       <div class="relative mx-auto mt-24 w-full max-w-md px-4">
         <div class="bg-gray-800 rounded-2xl border border-gray-700 shadow-2xl p-6">
           <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold">فرم ثبت نام پلان</h3>
+            <h3 id="plan-modal-title" class="text-xl font-bold">فرم ثبت نام پلان</h3>
             <button id="plan-modal-close" class="text-gray-400 hover:text-white" aria-label="close">✕</button>
           </div>
           <form class="space-y-4" onsubmit="return false;">
             <div>
-              <label class="block text-sm text-gray-300 mb-1">اسم</label>
-              <input id="pm-first-name" type="text" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="اسم خود را وارد کنید" />
+              <label for="pm-first-name" class="block text-sm text-gray-300 mb-1">اسم</label>
+              <input id="pm-first-name" required aria-required="true" type="text" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="اسم خود را وارد کنید" />
+              <p id="pm-first-name-error" class="mt-1 text-xs text-red-400 hidden">لطفاً اسم خود را وارد کنید.</p>
             </div>
             <div>
-              <label class="block text-sm text-gray-300 mb-1">تخلص</label>
-              <input id="pm-last-name" type="text" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="تخلص خود را وارد کنید" />
+              <label for="pm-last-name" class="block text-sm text-gray-300 mb-1">تخلص</label>
+              <input id="pm-last-name" required aria-required="true" type="text" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="تخلص خود را وارد کنید" />
+              <p id="pm-last-name-error" class="mt-1 text-xs text-red-400 hidden">لطفاً تخلص را وارد کنید.</p>
             </div>
             <div>
-              <label class="block text-sm text-gray-300 mb-1">شماره تماس</label>
-              <input id="pm-phone" type="tel" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="مثال: 07xxxxxxxx" />
+              <label for="pm-phone" class="block text-sm text-gray-300 mb-1">شماره تماس</label>
+              <input id="pm-phone" required aria-required="true" inputmode="tel" type="tel" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="مثال: 07xxxxxxxx" />
+              <p id="pm-phone-error" class="mt-1 text-xs text-red-400 hidden">لطفاً شماره تماس را وارد کنید.</p>
             </div>
             <div class="pt-2 flex items-center justify-between">
               <span id="pm-selected-plan" class="text-sm text-gray-400"></span>
-              <a id="pm-whatsapp" href="https://wa.me/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
+              <a id="pm-whatsapp" href="https://api.whatsapp.com/send?phone=93711036740" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
                 واتساپ
               </a>
             </div>
@@ -443,10 +444,16 @@
         const firstName = document.getElementById("pm-first-name");
         const lastName = document.getElementById("pm-last-name");
         const phone = document.getElementById("pm-phone");
+        const errors = {
+          first: document.getElementById("pm-first-name-error"),
+          last: document.getElementById("pm-last-name-error"),
+          phone: document.getElementById("pm-phone-error"),
+        };
 
         function openModal(planLabel) {
           selectedPlanEl.textContent = planLabel ? `پلان انتخاب شده: ${planLabel}` : "";
           modal.classList.remove("hidden");
+          firstName.focus();
         }
 
         function closeModal() {
@@ -467,15 +474,73 @@
           if (e.target === modal) closeModal();
         });
 
-        // build whatsapp link dynamically
-        function updateWaLink() {
-          const plan = selectedPlanEl.textContent.replace("پلان انتخاب شده: ", "");
-          const msg = `سلام، میخواهم در ${plan || "یکی از پلان ها"} ثبت نام کنم.\nاسم: ${firstName.value}\nتخلص: ${lastName.value}\nشماره: ${phone.value}`;
-          const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+        function validate() {
+          let valid = true;
+          const f = firstName.value.trim();
+          const l = lastName.value.trim();
+          const p = phone.value.trim();
+
+          // first name
+          if (!f) {
+            valid = false;
+            firstName.setAttribute("aria-invalid", "true");
+            errors.first.classList.remove("hidden");
+          } else {
+            firstName.removeAttribute("aria-invalid");
+            errors.first.classList.add("hidden");
+          }
+
+          // last name
+          if (!l) {
+            valid = false;
+            lastName.setAttribute("aria-invalid", "true");
+            errors.last.classList.remove("hidden");
+          } else {
+            lastName.removeAttribute("aria-invalid");
+            errors.last.classList.add("hidden");
+          }
+
+          // phone
+          if (!p) {
+            valid = false;
+            phone.setAttribute("aria-invalid", "true");
+            errors.phone.classList.remove("hidden");
+          } else {
+            phone.removeAttribute("aria-invalid");
+            errors.phone.classList.add("hidden");
+          }
+
+          // update link
+          const plan = selectedPlanEl.textContent.replace("پلان انتخاب شده: ", "") || "یکی از پلان ها";
+          const msg = `سلام، میخواهم در ${plan} ثبت نام کنم.\nاسم: ${f}\nتخلص: ${l}\nشماره: ${p}`;
+          const url = `https://api.whatsapp.com/send?phone=93711036740&text=${encodeURIComponent(msg)}`;
           waBtn.setAttribute("href", url);
+
+          // reflect disabled state visually
+          if (!valid) {
+            waBtn.setAttribute("aria-disabled", "true");
+            waBtn.classList.add("opacity-60", "cursor-not-allowed");
+          } else {
+            waBtn.removeAttribute("aria-disabled");
+            waBtn.classList.remove("opacity-60", "cursor-not-allowed");
+          }
+
+          return valid;
         }
-        [firstName, lastName, phone].forEach((el) => el.addEventListener("input", updateWaLink));
-        updateWaLink();
+
+        [firstName, lastName, phone].forEach((el) => el.addEventListener("input", validate));
+
+        waBtn.addEventListener("click", (e) => {
+          if (!validate()) {
+            e.preventDefault();
+            // focus first invalid
+            if (!firstName.value.trim()) return firstName.focus();
+            if (!lastName.value.trim()) return lastName.focus();
+            if (!phone.value.trim()) return phone.focus();
+          }
+        });
+
+        validate();
       })();
     </script>
     <script src="../top-to-bottom.js"></script>
