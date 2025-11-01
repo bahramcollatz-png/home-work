@@ -16,6 +16,52 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Hamburger Menu Styles */
+      .hamburger {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+      }
+      
+      .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+      
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      
+      /* Mobile Menu Animation */
+      #mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+      }
+      
+      #mobile-menu.show {
+        max-height: 400px;
+      }
+    </style>
   </head>
   <body class="bg-gray-900 text-white min-h-screen">
     <div id="vanta-globe"></div>
@@ -34,7 +80,8 @@
                 حسیب الله حمیدی
               </a>
             </div>
-            <div class="flex items-center space-x-4">
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-4">
               <a
                 href="index.html"
                 class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -63,6 +110,40 @@
                 href="contact.html"
                 class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors nav-smooth"
               >
+                ارتباط بامن
+              </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+              <button
+                id="mobile-menu-button"
+                class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                aria-label="Toggle menu"
+              >
+                <div class="hamburger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!-- Mobile Menu -->
+          <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+              <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
+                خانه
+              </a>
+              <a href="my-courses.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
+                کورس های من
+              </a>
+              <a href="ai-tools.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-gray-800">
+                ابزار های هوش مصنوعی
+              </a>
+              <a href="projects/projects.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
+                پروژه های من
+              </a>
+              <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
                 ارتباط بامن
               </a>
             </div>
@@ -174,7 +255,7 @@
               href="https://gemini.google.com/"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+              class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
             >
               <svg
                 style="width: 20px; height: 20px"
@@ -250,7 +331,7 @@
               href="https://chat.openai.com/"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+              class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
             >
               <svg
                 style="width: 20px; height: 20px"
@@ -330,7 +411,7 @@
               href="https://www.midjourney.com/"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+              class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
             >
               <svg
                 style="width: 20px; height: 20px"
@@ -413,6 +494,33 @@
       feather.replace();
     </script>
     <script src="./top-to-bottom.js"></script>
+
+    <!-- Mobile Menu Toggle -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburger = mobileMenuButton.querySelector('.hamburger');
+        
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('show');
+            hamburger.classList.toggle('active');
+          });
+          
+          // Close menu when clicking on a link
+          const menuLinks = mobileMenu.querySelectorAll('a');
+          menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              mobileMenu.classList.add('hidden');
+              mobileMenu.classList.remove('show');
+              hamburger.classList.remove('active');
+            });
+          });
+        }
+      });
+    </script>
 
     <!-- Search functionality -->
     <script>

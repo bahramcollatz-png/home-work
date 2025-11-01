@@ -47,6 +47,51 @@
         overflow: hidden;
         z-index: 10;
       }
+      
+      /* Hamburger Menu Styles */
+      .hamburger {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+      }
+      
+      .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+      
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      
+      /* Mobile Menu Animation */
+      #mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+      }
+      
+      #mobile-menu.show {
+        max-height: 400px;
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
@@ -64,18 +109,25 @@
                 حسیب الله حمیدی
             </a>
           </div>
+          <!-- Desktop Menu -->
           <div class="hidden md:flex items-center space-x-8">
             <a
               href="../my-courses.html"
               class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
-                ابزار های هوش مصنوعی
+                کورس های من
             </a>
             <a
               href="../ai-tools.html"
               class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
                 ابزار های هوش مصنوعی
+            </a>
+            <a
+              href="../projects/projects.html"
+              class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+                پروژه های من
             </a>
             <a
               href="../contact.html"
@@ -88,6 +140,55 @@
               class="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 transition-all shadow-md"
             >
                 بازگشت به خانه
+            </a>
+          </div>
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+              aria-label="Toggle menu"
+            >
+              <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+          <div class="px-2 pt-2 pb-3 space-y-1">
+            <a
+              href="../my-courses.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+            >
+              کورس های من
+            </a>
+            <a
+              href="../ai-tools.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+            >
+              ابزار های هوش مصنوعی
+            </a>
+            <a
+              href="../projects/projects.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+            >
+              پروژه های من
+            </a>
+            <a
+              href="../contact.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+            >
+              ارتباط بامن
+            </a>
+            <a
+              href="../index.html"
+              class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center"
+            >
+              بازگشت به خانه
             </a>
           </div>
         </div>
@@ -119,7 +220,7 @@
               </div>
               <p class="text-gray-300 text-lg leading-relaxed">
                 
-                یک کورس عالی برای مبتدیان برای درک بهتر هوش مصنوعی تاثیرات ان بالای جامعه استفاده ان در زندهگی روز مره 
+                یک کورس عالی برای مبتدیان برای درک بهتر هوش مصنوعی تاثیران بالای جامعه استفاده ان در زندهگی روز مره 
               </p>
               <div class="mt-6 flex flex-wrap gap-2">
                 <span
@@ -206,7 +307,7 @@
               </ul>
               <div class="mt-auto">
                 <button
-                  class="w-full bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                 >
                   
                   انتخاب پلان اساسی
@@ -331,7 +432,7 @@
                     class="w-5 h-5 text-green-500 mr-2"
                   ></i>
                   <span class="text-gray-300">
-                    استراتیژی توسعه هوش مصنوعی
+                    استراتژی توسعه هوش مصنوعی
                   </span>
                 </li>
                 <li class="flex items-start">
@@ -392,6 +493,19 @@
               <label for="pm-phone" class="block text-sm text-gray-300 mb-1">شماره تماس</label>
               <input id="pm-phone" required aria-required="true" inputmode="tel" type="tel" class="w-full rounded-lg bg-gray-900 border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="مثال: 07xxxxxxxx" />
               <p id="pm-phone-error" class="mt-1 text-xs text-red-400 hidden">لطفاً شماره تماس را وارد کنید.</p>
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">جنسیت</label>
+              <div class="flex items-center space-x-6">
+                <div class="flex items-center">
+                  <input type="radio" id="pm-male" name="pm-gender" value="male" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500" />
+                  <label for="pm-male" class="mr-2 text-gray-300">مرد</label>
+                </div>
+                <div class="flex items-center">
+                  <input type="radio" id="pm-female" name="pm-gender" value="female" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500" />
+                  <label for="pm-female" class="mr-2 text-gray-300">زن</label>
+                </div>
+              </div>
             </div>
             <div class="pt-2 flex items-center justify-between">
               <span id="pm-selected-plan" class="text-sm text-gray-400"></span>
@@ -464,6 +578,14 @@
           last: document.getElementById("pm-last-name-error"),
           phone: document.getElementById("pm-phone-error"),
         };
+        
+        function getGender() {
+          const male = document.getElementById("pm-male");
+          const female = document.getElementById("pm-female");
+          if (male && male.checked) return "مرد";
+          if (female && female.checked) return "زن";
+          return "";
+        }
 
         function openModal(planLabel) {
           selectedPlanEl.textContent = planLabel ? `پلان انتخاب شده: ${planLabel}` : "";
@@ -505,7 +627,9 @@
           else { phone.removeAttribute("aria-invalid"); errors.phone.classList.add("hidden"); }
 
           const plan = selectedPlanEl.textContent.replace("پلان انتخاب شده: ", "") || "یکی از پلان ها";
-          const msg = `سلام، میخواهم در ${plan} ثبت نام کنم.\nاسم: ${f}\nتخلص: ${l}\nشماره: ${p}`;
+          const gender = getGender();
+          let msg = `سلام، میخواهم در ${plan} ثبت نام کنم.\nاسم: ${f}\nتخلص: ${l}\nشماره: ${p}`;
+          if (gender) msg += `\nجنسیت: ${gender}`;
           const url = `https://api.whatsapp.com/send?phone=93711036740&text=${encodeURIComponent(msg)}`;
           waBtn.setAttribute("href", url);
 
@@ -516,15 +640,52 @@
 
         [firstName, lastName, phone].forEach((el) => el.addEventListener("input", validate));
         waBtn.addEventListener("click", (e) => {
+          e.preventDefault();
           if (!validate()) {
-            e.preventDefault();
             if (!firstName.value.trim()) return firstName.focus();
             if (!lastName.value.trim()) return lastName.focus();
             if (!phone.value.trim()) return phone.focus();
+          } else {
+            // Rebuild the URL with latest values before opening WhatsApp
+            const f = firstName.value.trim();
+            const l = lastName.value.trim();
+            const p = phone.value.trim();
+            const plan = selectedPlanEl.textContent.replace("پلان انتخاب شده: ", "") || "یکی از پلان ها";
+            const gender = getGender();
+            let msg = `سلام، میخواهم در ${plan} ثبت نام کنم.%0Aاسم: ${f}%0Aتخلص: ${l}%0Aشماره: ${p}`;
+            if (gender) msg += `%0Aجنسیت: ${gender}`;
+            const url = `https://api.whatsapp.com/send?phone=93711036740&text=${msg}`;
+            window.open(url, '_blank');
           }
         });
         validate();
       })();
+    </script>
+    <!-- Mobile Menu Toggle -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburger = mobileMenuButton.querySelector('.hamburger');
+        
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('show');
+            hamburger.classList.toggle('active');
+          });
+          
+          // Close menu when clicking on a link
+          const menuLinks = mobileMenu.querySelectorAll('a');
+          menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              mobileMenu.classList.add('hidden');
+              mobileMenu.classList.remove('show');
+              hamburger.classList.remove('active');
+            });
+          });
+        }
+      });
     </script>
     <script src="../top-to-bottom.js"></script>
   </body>
