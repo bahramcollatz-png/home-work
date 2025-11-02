@@ -61,6 +61,25 @@
       #mobile-menu.show {
         max-height: 400px;
       }
+      
+      /* Rounded Dropdown Options */
+      #priceFilter {
+        border-radius: 1.5rem;
+      }
+      
+      #priceFilter option {
+        border-radius: 8px !important;
+        padding: 8px;
+        margin: 4px;
+        background-color: #1f2937;
+      }
+      
+      /* For Firefox */
+      @-moz-document url-prefix() {
+        #priceFilter option {
+          border-radius: 8px;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white min-h-screen">
@@ -168,11 +187,11 @@
               <input
                 id="aiToolsSearch"
                 placeholder="Search AI tools (e.g., ChatGPT, Gemini, Writing)..."
-                class="w-full pl-10 pr-4 py-3 rounded-full border border-gray-700 bg-gray-800 text-white focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 outline-none shadow-sm"
+                class="w-full pl-4 pr-10 py-3 rounded-full border border-gray-700 bg-gray-800 text-white focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 outline-none shadow-sm"
                 type="text"
               />
               <svg
-                class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
