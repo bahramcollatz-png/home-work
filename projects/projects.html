@@ -28,7 +28,7 @@
         justify-content: center;
         gap: 5px;
       }
-      
+
       .hamburger span {
         display: block;
         width: 100%;
@@ -37,27 +37,27 @@
         transition: all 0.3s ease;
         border-radius: 2px;
       }
-      
+
       .hamburger.active span:nth-child(1) {
         transform: translateY(7px) rotate(45deg);
       }
-      
+
       .hamburger.active span:nth-child(2) {
         opacity: 0;
         transform: translateX(-10px);
       }
-      
+
       .hamburger.active span:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
       }
-      
+
       /* Mobile Menu Animation */
       #mobile-menu {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease-in-out;
       }
-      
+
       #mobile-menu.show {
         max-height: 400px;
       }
@@ -71,42 +71,208 @@
         class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800"
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex  justify-center items-center h-16">
+          <div class="flex justify-center items-center h-16">
             <div class="flex items-center mx-6">
-              <a href="index.html" class="text-xl font-bold text-white hover:text-indigo-400 transition-colors">
+              <a
+                href="index.html"
+                class="text-xl font-bold text-white hover:text-indigo-400 transition-colors"
+              >
                 حسیب الله حمیدی
               </a>
             </div>
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-4">
               <a
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  border-radius: 4px;
+                  margin-left: 1rem !important;
+                "
                 href="../index.html"
                 class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18px"
+                  height="18px"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M80,212V448a16,16,0,0,0,16,16h96V328a24,24,0,0,1,24-24h80a24,24,0,0,1,24,24V464h96a16,16,0,0,0,16-16V212"
+                    style="
+                      fill: none;
+                      stroke: #fff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 32px;
+                    "
+                  />
+                  <path
+                    d="M480,256,266.89,52c-5-5.28-16.69-5.34-21.78,0L32,256"
+                    style="
+                      fill: none;
+                      stroke: #fff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 32px;
+                    "
+                  />
+                  <polyline
+                    points="400 179 400 64 352 64 352 133"
+                    style="
+                      fill: none;
+                      stroke: #fff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 32px;
+                    "
+                  />
+                </svg>
                 خانه
               </a>
               <a
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  border-radius: 4px;
+                "
                 href="../my-courses.html"
                 class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
+                <svg
+                  fill="#fff"
+                  width="18px"
+                  height="18px"
+                  viewBox="0 0 256 256"
+                  id="Flat"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224,64,128,96,32,64l96-32Z" opacity="0.02" />
+                  <path
+                    d="M226.52979,56.41016l-96-32a8.00672,8.00672,0,0,0-5.05958,0L29.6239,56.35889l-.00976.00341-.14393.04786c-.02819.00927-.053.02465-.08105.03442a7.91407,7.91407,0,0,0-1.01074.42871c-.03748.019-.07642.03516-.11353.05469a7.97333,7.97333,0,0,0-.93139.58325c-.06543.04688-.129.09522-.19288.144a8.09113,8.09113,0,0,0-.81872.71119c-.02374.02416-.04443.05053-.06787.0747a8.03121,8.03121,0,0,0-.66107.783c-.04157.05567-.0846.10986-.12476.16675a8.00867,8.00867,0,0,0-.56714.92993c-.02582.04981-.04809.10083-.07287.15112a7.93932,7.93932,0,0,0-.40522.97608c-.01062.03149-.0238.06128-.034.093a7.95072,7.95072,0,0,0-.26288,1.08544c-.01337.07666-.024.15308-.0351.23A8.02889,8.02889,0,0,0,24,64v80a8,8,0,0,0,16,0V75.09985L73.58514,86.29492a63.97188,63.97188,0,0,0,20.42945,87.89746,95.88127,95.88127,0,0,0-46.48383,37.4375,7.9997,7.9997,0,1,0,13.40235,8.73828,80.023,80.023,0,0,1,134.1333,0,7.99969,7.99969,0,1,0,13.40234-8.73828,95.87928,95.87928,0,0,0-46.48346-37.43725,63.97209,63.97209,0,0,0,20.42957-87.89771l44.11493-14.70508a8.0005,8.0005,0,0,0,0-15.17968ZM176,120A48,48,0,1,1,89.34875,91.54932l36.12146,12.04052a8.00672,8.00672,0,0,0,5.05958,0l36.12146-12.04052A47.85424,47.85424,0,0,1,176,120Zm-9.29791-45.3335c-.01984.00708-.03992.01294-.05976.02L128,87.56738,89.35785,74.68652c-.02033-.00732-.04083-.01318-.06122-.0205L57.29834,64,128,40.43262,198.70166,64Z"
+                  />
+                </svg>
                 کورس های من
               </a>
               <a
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  border-radius: 4px;
+                "
                 href="../ai-tools.html"
                 class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
+                <svg
+                  style="height: 18px; width: 18px"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke-width="1.2"
+                  class="h-6 w-6"
+                  viewBox="-0.17090198558635983 0.482230148717937 41.14235318283891 40.0339509076386"
+                >
+                  <text x="-9999" y="-9999">ChatGPT</text>
+                  <path
+                    d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835A9.964 9.964 0 0 0 18.306.5a10.079 10.079 0 0 0-9.614 6.977 9.967 9.967 0 0 0-6.664 4.834 10.08 10.08 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 7.516 3.35 10.078 10.078 0 0 0 9.617-6.981 9.967 9.967 0 0 0 6.663-4.834 10.079 10.079 0 0 0-1.243-11.813zM22.498 37.886a7.474 7.474 0 0 1-4.799-1.735c.061-.033.168-.091.237-.134l7.964-4.6a1.294 1.294 0 0 0 .655-1.134V19.054l3.366 1.944a.12.12 0 0 1 .066.092v9.299a7.505 7.505 0 0 1-7.49 7.496zm-16.106-6.88a7.471 7.471 0 0 1-.894-5.023c.06.036.162.099.237.141l7.964 4.6a1.297 1.297 0 0 0 1.308 0l9.724-5.614v3.888a.12.12 0 0 1-.048.103l-8.051 4.649a7.504 7.504 0 0 1-10.24-2.744zM4.297 13.62A7.469 7.469 0 0 1 8.2 10.333c0 .068-.004.19-.004.274v9.201a1.294 1.294 0 0 0 .654 1.132l9.723 5.614-3.366 1.944a.12.12 0 0 1-.114.01L7.04 23.856a7.504 7.504 0 0 1-2.743-10.237zm27.658 6.437l-9.724-5.615 3.367-1.943a.121.121 0 0 1 .113-.01l8.052 4.648a7.498 7.498 0 0 1-1.158 13.528v-9.476a1.293 1.293 0 0 0-.65-1.132zm3.35-5.043a7.395 7.395 0 0 0-.236-.141l-7.965-4.6a1.298 1.298 0 0 0-1.308 0l-9.723 5.614v-3.888a.12.12 0 0 1 .048-.103l8.05-4.645a7.497 7.497 0 0 1 11.135 7.763zm-21.063 6.929l-3.367-1.944a.12.12 0 0 1-.065-.092v-9.299a7.497 7.497 0 0 1 12.293-5.756 6.94 6.94 0 0 0-.236.134l-7.965 4.6a1.294 1.294 0 0 0-.654 1.132l-.006 11.225zM16.071 18l4.33-2.501 4.332 2.5v5l-4.331 2.5-4.331-2.5V18z"
+                    fill="currentColor"
+                  />
+                </svg>
                 ابزار های هوش مصنوعی
               </a>
               <a
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  border-radius: 4px;
+                "
                 href="projects.html"
                 class="text-indigo-400 px-3 py-2 rounded-md text-sm font-medium"
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18px"
+                  height="18px"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M277.42,247a24.68,24.68,0,0,0-4.08-5.47L255,223.44a21.63,21.63,0,0,0-6.56-4.57,20.93,20.93,0,0,0-23.28,4.27c-6.36,6.26-18,17.68-39,38.43C146,301.3,71.43,367.89,37.71,396.29a16,16,0,0,0-1.09,23.54l39,39.43a16.13,16.13,0,0,0,23.67-.89c29.24-34.37,96.3-109,136-148.23,20.39-20.06,31.82-31.58,38.29-37.94A21.76,21.76,0,0,0,277.42,247Z"
+                    style="
+                      fill: none;
+                      stroke: #7f8af5;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 32px;
+                    "
+                  />
+                  <path
+                    d="M478.43,201l-34.31-34a5.44,5.44,0,0,0-4-1.59,5.59,5.59,0,0,0-4,1.59h0a11.41,11.41,0,0,1-9.55,3.27c-4.48-.49-9.25-1.88-12.33-4.86-7-6.86,1.09-20.36-5.07-29a242.88,242.88,0,0,0-23.08-26.72c-7.06-7-34.81-33.47-81.55-52.53a123.79,123.79,0,0,0-47-9.24c-26.35,0-46.61,11.76-54,18.51-5.88,5.32-12,13.77-12,13.77A91.29,91.29,0,0,1,202.35,77a79.53,79.53,0,0,1,23.28-1.49C241.19,76.8,259.94,84.1,270,92c16.21,13,23.18,30.39,24.27,52.83.8,16.69-15.23,37.76-30.44,54.94a7.85,7.85,0,0,0,.4,10.83l21.24,21.23a8,8,0,0,0,11.14.1c13.93-13.51,31.09-28.47,40.82-34.46s17.58-7.68,21.35-8.09A35.71,35.71,0,0,1,380.08,194a13.65,13.65,0,0,1,3.08,2.38c6.46,6.56,6.07,17.28-.5,23.74l-2,1.89a5.5,5.5,0,0,0,0,7.84l34.31,34a5.5,5.5,0,0,0,4,1.58,5.65,5.65,0,0,0,4-1.58L478.43,209A5.82,5.82,0,0,0,478.43,201Z"
+                    style="
+                      fill: none;
+                      stroke: #7f8af5;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 32px;
+                    "
+                  />
+                </svg>
                 پروژه های من
               </a>
               <a
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  border-radius: 4px;
+                  margin-right: 0px !important;
+                "
                 href="../contact.html"
                 class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18px"
+                  height="18px"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M208,352H144a96,96,0,0,1,0-192h64"
+                    style="
+                      fill: none;
+                      stroke: #fff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 36px;
+                    "
+                  />
+                  <path
+                    d="M304,160h64a96,96,0,0,1,0,192H304"
+                    style="
+                      fill: none;
+                      stroke: #fff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 36px;
+                    "
+                  />
+                  <line
+                    x1="163.29"
+                    y1="256"
+                    x2="350.71"
+                    y2="256"
+                    style="
+                      fill: none;
+                      stroke: #fff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 36px;
+                    "
+                  />
+                </svg>
                 ارتباط بامن
               </a>
             </div>
@@ -128,19 +294,34 @@
           <!-- Mobile Menu -->
           <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1">
-              <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
+              <a
+                href="../index.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+              >
                 خانه
               </a>
-              <a href="../my-courses.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
+              <a
+                href="../my-courses.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+              >
                 کورس های من
               </a>
-              <a href="../ai-tools.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
+              <a
+                href="../ai-tools.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+              >
                 ابزار های هوش مصنوعی
               </a>
-              <a href="projects.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-gray-800">
+              <a
+                href="projects.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-gray-800"
+              >
                 پروژه های من
               </a>
-              <a href="../contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
+              <a
+                href="../contact.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+              >
                 ارتباط بامن
               </a>
             </div>
@@ -155,7 +336,8 @@
             پروژه های من
           </h2>
           <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-            پروژه های خلاقانه و عملی که با استفاده از تکنالوژی های مدرن ساخته شده است
+            پروژه های خلاقانه و عملی که با استفاده از تکنالوژی های مدرن ساخته
+            شده است
           </p>
         </div>
 
@@ -179,9 +361,12 @@
                   وب سایت فروشگاهی
                 </h3>
                 <p class="text-gray-400 text-sm mb-4">
-                  یک وب سایت فروشگاهی مدرن با قابلیت های پیشرفته برای خرید و فروش آنلاین محصولات
+                  یک وب سایت فروشگاهی مدرن با قابلیت های پیشرفته برای خرید و
+                  فروش آنلاین محصولات
                 </p>
-                <h4 class="text-sm font-semibold text-white mb-3">تکنالوژی های استفاده شده</h4>
+                <h4 class="text-sm font-semibold text-white mb-3">
+                  تکنالوژی های استفاده شده
+                </h4>
                 <div class="mb-4">
                   <div class="flex flex-wrap gap-2">
                     <span
@@ -251,9 +436,12 @@
                   سیستم مدیریت محتوا
                 </h3>
                 <p class="text-gray-400 text-sm mb-4">
-                  یک سیستم مدیریت محتوا با قابلیت های ویرایش، انتشار و مدیریت محتوای دیجیتال
+                  یک سیستم مدیریت محتوا با قابلیت های ویرایش، انتشار و مدیریت
+                  محتوای دیجیتال
                 </p>
-                <h4 class="text-sm font-semibold text-white mb-3">تکنالوژی های استفاده شده</h4>
+                <h4 class="text-sm font-semibold text-white mb-3">
+                  تکنالوژی های استفاده شده
+                </h4>
                 <div class="mb-4">
                   <div class="flex flex-wrap gap-2">
                     <span
@@ -323,9 +511,12 @@
                   اپلیکیشن موبایل
                 </h3>
                 <p class="text-gray-400 text-sm mb-4">
-                  یک اپلیکیشن موبایل برای مدیریت وظایف روزمره با رابط کاربری زیبا و کاربردی
+                  یک اپلیکیشن موبایل برای مدیریت وظایف روزمره با رابط کاربری
+                  زیبا و کاربردی
                 </p>
-                <h4 class="text-sm font-semibold text-white mb-3">تکنالوژی های استفاده شده</h4>
+                <h4 class="text-sm font-semibold text-white mb-3">
+                  تکنالوژی های استفاده شده
+                </h4>
                 <div class="mb-4">
                   <div class="flex flex-wrap gap-2">
                     <span
@@ -428,28 +619,28 @@
       feather.replace();
     </script>
     <script src="../top-to-bottom.js"></script>
-    
+
     <!-- Mobile Menu Toggle -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburger = mobileMenuButton.querySelector('.hamburger');
-        
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const hamburger = mobileMenuButton.querySelector(".hamburger");
+
         if (mobileMenuButton && mobileMenu) {
-          mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('show');
-            hamburger.classList.toggle('active');
+          mobileMenuButton.addEventListener("click", function () {
+            mobileMenu.classList.toggle("hidden");
+            mobileMenu.classList.toggle("show");
+            hamburger.classList.toggle("active");
           });
-          
+
           // Close menu when clicking on a link
-          const menuLinks = mobileMenu.querySelectorAll('a');
-          menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-              mobileMenu.classList.add('hidden');
-              mobileMenu.classList.remove('show');
-              hamburger.classList.remove('active');
+          const menuLinks = mobileMenu.querySelectorAll("a");
+          menuLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+              mobileMenu.classList.add("hidden");
+              mobileMenu.classList.remove("show");
+              hamburger.classList.remove("active");
             });
           });
         }
@@ -457,4 +648,3 @@
     </script>
   </body>
 </html>
-
