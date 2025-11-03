@@ -100,15 +100,12 @@
       class="bg-gray-900/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <div class="flex-shrink-0">
-            <a
-              href="../index.html"
-              class="text-white font-extrabold text-xl tracking-tight hover:text-indigo-300 transition-colors"
-            >
+       <div class="flex  justify-center items-center h-16">
+            <div class="flex items-center mx-6">
+              <a href="index.html" class="text-xl font-bold text-white hover:text-indigo-400 transition-colors">
                 حسیب الله حمیدی
-            </a>
-          </div>
+              </a>
+            </div>
           <!-- Desktop Menu -->
           <div class="hidden md:flex items-center space-x-8">
             <a
@@ -628,7 +625,7 @@
           else { phone.removeAttribute("aria-invalid"); errors.phone.classList.add("hidden"); }
 
           const gender = getGender();
-          let msg = `سلام، میخواهم در یکی از پلان ها ثبت نام کنم.\nاسم: ${f}\n ${l}\nشماره: ${p}`;
+          let msg = `سلام، میخواهم در پلان  ثبت نام کنم.\nاسم: ${f}\n ${l}\nشماره: ${p}`;
           if (gender) msg += `\nجنسیت: ${gender}`;
           const url = `https://api.whatsapp.com/send?phone=93711036740&text=${encodeURIComponent(msg)}`;
           waBtn.setAttribute("href", url);
@@ -651,7 +648,7 @@
             const l = lastName.value.trim();
             const p = phone.value.trim();
             const gender = getGender();
-            let msg = `سلام، میخواهم در یکی از پلان ها ثبت نام کنم.%0Aاسم: ${f}${l}%0Aشماره: ${p}`;
+            let msg = `سلام، میخواهم در پلان  ها ثبت نام کنم.%0Aاسم: ${f}${l}%0Aشماره: ${p}`;
             if (gender) msg += `%0Aجنسیت: ${gender}`;
             const url = `https://api.whatsapp.com/send?phone=93711036740&text=${msg}`;
             window.open(url, '_blank');
