@@ -596,8 +596,9 @@
           phone: document.getElementById("pm-phone-error"),
         };
         
-        // Global variable to store selected plan name
+        // Global variables to store selected plan name and course name
         let selectedPlanName = "";
+        const courseName = "زبان برنامه نویسی پایتون"; // Course name for this page
         
         function getGender() {
           const male = document.getElementById("pm-male");
@@ -668,9 +669,9 @@
             errors.phone.classList.add("hidden");
           }
 
-          // update link with the selected plan name
+          // update link with the selected plan name and course name
           const gender = getGender();
-          let msg = `سلام، میخواهم در ${selectedPlanName} ثبت نام کنم.%0Aاسم: ${f}  ${l}%0Aشماره: ${p}`;
+          let msg = `سلام، میخواهم در ${selectedPlanName} برای کورس "${courseName}" ثبت نام کنم.%0Aاسم: ${f}  ${l}%0Aشماره: ${p}`;
           if (gender) msg += `%0Aجنسیت: ${gender}`;
           const url = `https://api.whatsapp.com/send?phone=93711036740&text=${msg}`;
           waBtn.setAttribute("href", url);
@@ -702,7 +703,7 @@
             const l = lastName.value.trim();
             const p = phone.value.trim();
             const gender = getGender();
-            let msg = `سلام، میخواهم در ${selectedPlanName} ثبت نام کنم.%0Aاسم: ${f}  ${l}%0Aشماره: ${p}`;
+            let msg = `سلام، میخواهم در ${selectedPlanName} برای کورس "${courseName}" ثبت نام کنم.%0Aاسم: ${f}  ${l}%0Aشماره: ${p}`;
             if (gender) msg += `%0Aجنسیت: ${gender}`;
             const url = `https://api.whatsapp.com/send?phone=93711036740&text=${msg}`;
             window.open(url, '_blank');
