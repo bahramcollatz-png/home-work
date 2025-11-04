@@ -582,6 +582,9 @@
           phone: document.getElementById("pm-phone-error"),
         };
         
+        // Global variable to store selected plan name
+        let selectedPlanName = "";
+        
         function getGender() {
           const male = document.getElementById("pm-male");
           const female = document.getElementById("pm-female");
@@ -589,7 +592,10 @@
           if (female && female.checked) return "زن";
           return "";
         }
+        
         function openModal(planLabel) {
+          // Store the selected plan name
+          selectedPlanName = planLabel;
           modal.classList.remove("hidden");
           firstName.focus();
         }
@@ -628,9 +634,10 @@
           else { phone.removeAttribute("aria-invalid"); errors.phone.classList.add("hidden"); }
 
           const gender = getGender();
-          let msg = `سلام، میخواهم در پلان  ثبت نام کنم.\nاسم: ${f}\n ${l}\nشماره: ${p}`;
-          if (gender) msg += `\nجنسیت: ${gender}`;
-          const url = `https://api.whatsapp.com/send?phone=93711036740&text=${encodeURIComponent(msg)}`;
+          // Use the selected plan name in the message
+          let msg = `سلام، میخواهم در ${selectedPlanName} ثبت نام کنم.%0Aاسم: ${f}  ${l}%0Aشماره: ${p}`;
+          if (gender) msg += `%0Aجنسیت: ${gender}`;
+          const url = `https://api.whatsapp.com/send?phone=93711036740&text=${msg}`;
           waBtn.setAttribute("href", url);
 
           if (!valid) { waBtn.setAttribute("aria-disabled","true"); waBtn.classList.add("opacity-60","cursor-not-allowed"); }
@@ -651,7 +658,8 @@
             const l = lastName.value.trim();
             const p = phone.value.trim();
             const gender = getGender();
-            let msg = `سلام، میخواهم در پلان  ها ثبت نام کنم.%0Aاسم: ${f}${l}%0Aشماره: ${p}`;
+            // Use the selected plan name in the message
+            let msg = `سلام، میخواهم در ${selectedPlanName} ثبت نام کنم.%0Aاسم: ${f}  ${l}%0Aشماره: ${p}`;
             if (gender) msg += `%0Aجنسیت: ${gender}`;
             const url = `https://api.whatsapp.com/send?phone=93711036740&text=${msg}`;
             window.open(url, '_blank');

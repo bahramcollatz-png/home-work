@@ -67,7 +67,7 @@
         border-radius: 1.5rem;
       }
       
-      #priceFilter option {
+      .select-options {
         border-radius: 8px !important;
         padding: 8px;
         margin: 4px;
@@ -183,7 +183,7 @@
             <div class="relative flex-1 gap-2">
               <input
                  id="aiToolsSearch"
-                placeholder="Search AI tools (e.g., ChatGPT, Gemini, Writing)..."
+                placeholder="جستجوی هوش های مصنوعی ..."
                 class="w-full pl-4 pr-12 py-3 rounded-full border border-gray-700 bg-gray-800 text-white focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 outline-none shadow-sm"
                 type="text"
               />
@@ -216,9 +216,11 @@
                 aria-label="Filter tools by price"
                 class="appearance-none bg-gray-800 border border-gray-700 text-gray-200 text-sm rounded-full py-3 pl-9 pr-8 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               >
-                <option value="all">فیلتر</option>
-                <option value="free">رایگان</option>
-                <option value="paid">پولی</option>
+                <div style="border-radius: 8px !important;">
+                  <option   value="all">فیلتر</option>
+                  <option   value="free">رایگان</option>
+                  <option   value="paid">پولی</option>
+                </div>
               </select>
             </div>
           </div>
