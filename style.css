@@ -231,8 +231,13 @@ body {
     background-position: 0% 50%;
   }
 } */
-.long-gap {
+/* .long-gap {
   gap: 10rem;
+} */
+.item-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
 }
 .hero::before {
   /* subtle overlay for extra depth */
