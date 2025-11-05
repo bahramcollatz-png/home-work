@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Vazir";
   src: url("./fonts/vazir-font-v16.1.0/Vazir-Medium.woff2") format("woff2"),
-       url("./fonts/vazir-font-v16.1.0/Vazir-Medium.woff") format("woff"),
-       url("./fonts/vazir-font-v16.1.0/Vazir-Medium.ttf") format("truetype");
+    url("./fonts/vazir-font-v16.1.0/Vazir-Medium.woff") format("woff"),
+    url("./fonts/vazir-font-v16.1.0/Vazir-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -10,9 +10,9 @@
 html {
   scroll-behavior: smooth;
 }
-body{
+body {
   direction: rtl;
- }
+}
 /* Back to Top button styles */
 
 /* Back to Top button with ripple signaling effect */
@@ -231,13 +231,15 @@ body {
     background-position: 0% 50%;
   }
 } */
-
+.long-gap {
+  gap: 10rem;
+}
 .hero::before {
   /* subtle overlay for extra depth */
   content: "";
   position: absolute;
   inset: 0;
-   
+
   pointer-events: none;
 }
 
