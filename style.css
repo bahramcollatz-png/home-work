@@ -158,6 +158,16 @@ body {
   font-family: "Vazir", sans-serif;
   font-weight: 500;
 }
+
+/* Fix for SVG icons not changing color on hover */
+.nav-link-style:hover svg {
+  stroke: currentColor !important;
+  fill: currentColor !important;
+}
+
+.nav-link-style svg {
+  transition: all 0.3s ease;
+}
 #vanta-globe {
   position: absolute;
   top: 0;
