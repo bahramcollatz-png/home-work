@@ -234,6 +234,13 @@ body {
 /* .long-gap {
   gap: 10rem;
 } */
+.mgr-10{
+  margin-right: 10rem !important;
+}
+.mgl-10{
+  margin-left: 10rem !important;
+}
+
 .item-row {
   display: flex !important;
   align-items: center !important;
